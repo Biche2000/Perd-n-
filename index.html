@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me perdonas, amor?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #333;
+            text-shadow: 2px 2px #f0f0f0;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .button.no {
+            background-color: #ff4c4c;
+            color: white;
+        }
+        .button.yes {
+            background-color: #4caf50;
+            color: white;
+        }
+        .button.no:hover {
+            background-color: #ff6666;
+        }
+        .button.yes:hover {
+            background-color: #66bb6a;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Me perdonas, amor?</h1>
+    <div class="buttons">
+        <button class="button yes">Sí</button>
+        <button class="button no">No</button>
+    </div>
+    <script>
+        const noButton = document.querySelector('.button.no');
+        const yesButton = document.querySelector('.button.yes');
+        const noButtonOriginalSize = noButton.getBoundingClientRect();
+
+        noButton.addEventListener('mouseover', () => {
+            noButton.style.transform = 'scale(0.8)';
+            yesButton.style.transform = 'scale(1.2)';
+        });
+
+        noButton.addEventListener('click', () => {
+            let width = noButtonOriginalSize.width;
+            let height = noButtonOriginalSize.height;
+
+            const interval = setInterval(() => {
+                if (width > 0 && height > 0) {
+                    width -= 2;
+                    height -= 2;
+                    noButton.style.width = `${width}px`;
+                    noButton.style.height = `${height}px`;
+                } else {
+                    clearInterval(interval);
+                    noButton.style.display = 'none';
+                }
+            }, 30);
+        });
+
+        yesButton.addEventListener('mouseover', () => {
+            noButton.style.transform = 'scale(0.8)';
+            yesButton.style.transform = 'scale(1.2)';
+        });
+
+        yesButton.addEventListener('click', () => {
+            alert("¡Gracias, mi niña! Te amo, Itaty 💖🌹");
+        });
+    </script>
+</body>
+</html>
