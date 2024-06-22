@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me perdonas, amor?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button.no {
+            background-color: #ff4c4c;
+            color: white;
+        }
+        .button.yes {
+            background-color: #4caf50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Me perdonas, amor?</h1>
+    <div class="buttons">
+        <button class="button yes">Sí</button>
+        <button class="button no">No</button>
+    </div>
+    <script>
+        const noButton = document.querySelector('.button.no');
+        const yesButton = document.querySelector('.button.yes');
+        const noButtonOriginalSize = noButton.getBoundingClientRect();
+
+        noButton.addEventListener('mouseover', () => {
+            noButton.style.transform = 'scale(0.8)';
+            yesButton.style.transform = 'scale(1.2)';
+        });
+
+        noButton.addEventListener('click', () => {
+            let width = noButtonOriginalSize.width;
+            let height = noButtonOriginalSize.height;
+
+            const interval = setInterval(() => {
+                if (width > 0 && height > 0) {
+                    width -= 2;
+                    height -= 2;
+                    noButton.style.width = `${width}px`;
+                    noButton.style.height = `${height}px`;
+                } else {
+                    clearInterval(interval);
+                    noButton.style.display = 'none';
+                }
+            }, 30);
+        });
+
+        yesButton.addEventListener('mouseover', () => {
+            noButton.style.transform = 'scale(0.8)';
+            yesButton.style.transform = 'scale(1.2)';
+        });
+
+        yesButton.addEventListener('click', () => {
+            alert("¡Gracias, mi niña! Te amo, Itaty 💖🌹");
+        });
+    </script>
+</body>
+</html>
